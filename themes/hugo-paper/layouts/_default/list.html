@@ -1,0 +1,66 @@
+{{ define "main" }}
+
+<!-- Tag Title -->
+{{ if and .Title (eq .Type "tags") }}
+<h1 class="mb-16">#{{ .Title }}</h1>
+{{ end }}
+
+<!-- $pages -->
+{{ $pages := union .RegularPages .Sections }}<!---->
+{{ if .IsHome }}<!---->
+{{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
+{{ end }}
+
+<!-- Articles -->
+{{ $paginator := .Paginate $pages }} {{ range $index, $page := $paginator.Pages
+}}<!---->
+
+<!-- avatar -->
+{{ if and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}<!---->
+
+{{ $avatar_url := $.Scratch.Get "avatar_url" }}<!---->
+{{ if or $avatar_url site.Params.name }}
+<div class="-mt-2 mb-16 flex items-center">
+  {{ if $avatar_url }}
+  <div class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]">
+    <img class="my-0 aspect-square w-16 rounded-full !bg-black/5 hover:animate-spin dark:!bg-black/80"
+      src="{{ $avatar_url }}" alt="{{ site.Params.name | default site.Title }}" />
+  </div>
+  {{ end }}<!---->
+  {{ if site.Params.name }}
+  <div>
+    <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">{{ site.Params.name }}</h1>
+    <div class="break-words">
+      {{ site.Params.bio | default (print `A blog by `
+      site.Params.name) }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ end }}<!---->
+
+{{ end }}
+
+<p>LongX is an initiative that aims to empower rising generations within the longevity sector. As the field evolves,
+  the lines between our roles blur.</p>
+<p>Regardless of the vision, we need the field to remain young. We aim to:</p>
+<ul>
+  <li><b>Exchange</b>: by sharing the success and failure stories we wish we heard. From each other, for each other.
+  </li>
+  <li><b>Educate</b>: by providing young longevity enthusiasts with the up-to-date resources and content we wish we
+    had.
+  </li>
+  <li><b>Engage</b>: the next generation of leaders, advocates, and curious minds in the fields of aging and
+    longevity, by sharing the opportunities to get involved we wish we were exposed to.
+  </li>
+</ul>
+<p>
+  Finally, we would like to say welcome! This is a shared space for interdisciplinary collaboration and creative
+  exploration. Come join us in our Longevity Xploration.
+</p>
+<hr>
+
+{{ end }}
+
+
+{{ end }}
