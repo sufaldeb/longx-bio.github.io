@@ -10,6 +10,8 @@ As part of our mission to empower rising generations within the longevity sector
 
 We work with them to provide feedback and guidance while they write an article on a topic of their choice, and then share them here. We also connect these students with relevant opportunities along the way. 
 
+
+<!---
 ## Index content by topic: 
 - [Introductory](#introductory)
 - [Deep dives](#deep-dives)
@@ -72,5 +74,5 @@ Tagline for describing this category of articles
   
     
 [Back to top](#index-content-by-topic)
-
+--->
 ---
